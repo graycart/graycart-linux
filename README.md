@@ -2,11 +2,24 @@
 
 > **Status:** placeholder / research stage
 
-Graycart Linux is the future gaming-focused Linux distribution in the Graycart family.
+Graycart Linux is the future gaming-focused Linux **host** (and optional branded distribution) in the Graycart family.
 
-The current direction is to explore an **Omarchy-inspired, Arch-based foundation** with a much stronger emphasis on gaming, emulation, controller-first use, sane recovery, and a cohesive Graycart experience from boot to play.
+**Research default ([01](./docs/01-scope-and-models.md)):** ship the **host app on stock distros first** (Meaning A), then optionally a **Model 4 immutable/atomic branded image** (Fedora bootc / Universal Blue–style; Nix flake acceptable alternate). Emphasize gaming, emulation, controller-first use, sane recovery, and a cohesive Graycart experience from boot to play. **Dave review of docs 01–03 is the gate before image work.**
 
 This repository is intentionally small today. It exists so the project has a public home while we research the base system and decide what Graycart Linux should become.
+
+## Research docs
+
+Start here: **[`docs/README.md`](./docs/README.md)**
+
+| Doc | Topic |
+|-----|--------|
+| [vision.md](./docs/vision.md) | Product vision |
+| [01 — Scope & models](./docs/01-scope-and-models.md) | Host vs branded OS; competing models |
+| [02 — Technical stack](./docs/02-technical-stack.md) | Boot → kernel → userspace → graphics → CI |
+| [03 — Roadmap & risks](./docs/03-roadmap-and-risks.md) | Phases, legal, go/no-go |
+
+Agent norms: [`AGENTS.md`](./AGENTS.md) · credits: [`ATTRIBUTION.md`](./ATTRIBUTION.md)
 
 ## Vision
 
@@ -25,25 +38,30 @@ The goals are:
 
 ## Likely foundation
 
-We are currently leaning toward an approach inspired by [Omarchy](https://omarchy.org/): a curated, opinionated Arch Linux experience rather than inventing a distribution stack from scratch.
+**Default path (research):** **Model 4 — immutable/atomic branded image** on an upstream atomic stack ([Fedora bootc](https://fedoramagazine.org/building-your-own-atomic-bootc-desktop/) / [Universal Blue](https://github.com/ublue-os/bazzite)–style; [Nix flake](https://nixos.wiki/wiki/Flakes) if the team already lives in Nix) — **after** a Graycart Linux **host app** runs on stock Fedora/Ubuntu/Arch.
 
-That direction is **not final**. Before implementation we need to answer questions around update strategy, image creation, recovery, hardware enablement, desktop/session choice, packaging, and how much of the base should remain upstream-compatible.
+Why: lowest effort/risk that still yields a coherent product skin; inherits upstream security and GPU stacks; keeps emulator accuracy in `*-core`; matches how niche gaming OSes (e.g. Bazzite) actually ship. See [01 §10](./docs/01-scope-and-models.md).
 
-Graycart Linux should borrow good ideas where they make sense without simply becoming "Omarchy with different wallpaper."
+**Not the default:** from-scratch OS, LFS-as-product, or ChromeOS/Asahi-scale downstream kernels. An [Omarchy](https://omarchy.org/)-inspired Arch UX remains a useful **ideas source** for session polish — not the recommended image/update architecture.
+
+Before implementation we need Dave acceptance of base (bootc/UB vs Nix vs host-only), update/rollback, hardware classes, session choice, branding (Linux Mark), and packaging boundaries.
 
 ## Early roadmap
 
-### Phase 0 — Research
+Aligned with [`docs/03-roadmap-and-risks.md`](./docs/03-roadmap-and-risks.md):
 
-- Evaluate Omarchy and alternative Arch-based foundations.
+### Phase 0 — Research (now)
+
+- Confirm Model 4 (atomic image) vs host-app-only; choose bootc/UB vs Nix vs Debian+mkosi.
 - Define supported hardware classes.
-- Decide desktop/session architecture.
+- Decide desktop/session architecture (Gamescope / Wayland).
 - Define update, rollback, and recovery strategy.
-- Establish branding and UX principles.
+- Establish branding and UX principles (incl. Linux Mark).
+- Accept docs 01–03 before any public “download Graycart Linux” claim.
 
 ### Phase 1 — Bootstrap
 
-- Reproducible base installation/image.
+- Reproducible base installation/image (only after research gate).
 - Graycart package repository or overlay strategy.
 - First-boot configuration.
 - Hardware detection and sane defaults.
@@ -58,7 +76,7 @@ Graycart Linux should borrow good ideas where they make sense without simply bec
 
 ### Phase 3 — Graycart experience
 
-- Graycart GB integration.
+- Graycart GB integration (host over cores — no forked machine logic).
 - Future Graycart GBA integration.
 - Unified game-library concepts where useful.
 - Save-data, screenshot, controller-profile, and diagnostic conventions.
@@ -82,19 +100,20 @@ Graycart Linux should borrow good ideas where they make sense without simply bec
 6. **Do not sacrifice the desktop just to imitate a console.**
 7. **Measure performance claims instead of assuming them.**
 8. **Controller focus, audio routing, suspend/resume, and display behavior are product features.**
+9. **Emulator accuracy stays in `*-core` crates** — this repo is host / OS shell only.
 
 ## Graycart family
 
 - [`graycart`](https://github.com/graycart/graycart) — project umbrella
 - [`graycart-gb`](https://github.com/graycart/graycart-gb) — DMG / Game Boy Color emulator
 - [`graycart-gba`](https://github.com/graycart/graycart-gba) — future Game Boy Advance emulator
-- **`graycart-linux`** — future gaming-focused Linux distribution
+- **`graycart-linux`** — future gaming-focused Linux host / distribution
 
 ## Contributing
 
-There is nothing substantial to build yet. Early contributions should focus on research, experiments, hardware findings, and architecture proposals rather than large implementation PRs.
+Early contributions should focus on research, experiments, hardware findings, and architecture proposals rather than large implementation PRs. Read [`AGENTS.md`](./AGENTS.md) and [`ATTRIBUTION.md`](./ATTRIBUTION.md) before editing docs or sources.
 
-When development begins, this repository will gain a formal contribution guide, build instructions, and project-specific agent guidance.
+When development begins, this repository will gain a formal contribution guide and build instructions.
 
 ## License
 
