@@ -6,9 +6,9 @@ The experience should be coherent from boot through game launch, play, suspend, 
 
 ## Product direction
 
-**Decided (Dave, 2026-09-12):** Graycart Linux is **based on [Omarchy](https://omarchy.org/)**. See [04](./04-omarchy-base.md) for the derivative plan (stub until research lands). Experience goals below drive what we change on top of that base.
+**Decided (Dave, 2026-09-12):** **Omarchy-derived; Graycart-stripped host OS.** Upstream [Omarchy](https://omarchy.org/); aggressively strip/customize for a lean Graycart host — not stock Omarchy branding. See [04](./04-omarchy-base.md) (stub until research lands). Experience goals below drive the strip and customize matrices.
 
-Graycart priorities on the Omarchy foundation: gaming latency, controller behavior, display/audio switching, emulator host integration, Steam/Proton, handheld/TV use, recovery, and reproducibility.
+Graycart priorities on that base: gaming latency, controller behavior, display/audio switching, emulator host integration, Steam/Proton, handheld/TV use, recovery, and reproducibility.
 
 ## Experience goals
 

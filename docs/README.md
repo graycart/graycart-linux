@@ -1,13 +1,13 @@
 # graycart-linux research docs
 
-Research pack for a gaming-focused Linux **host / Omarchy-derived system** in the [Graycart](https://github.com/graycart/graycart) family. **Review gate before building images or a public distro** ([03](./03-roadmap-and-risks.md), [04](./04-omarchy-base.md)).
+Research pack for a gaming-focused Linux **host — Omarchy-derived; Graycart-stripped** in the [Graycart](https://github.com/graycart/graycart) family. **Review gate before building images or a public distro** ([03](./03-roadmap-and-risks.md), [04](./04-omarchy-base.md)).
 
 **Agent norms + credits:** [`AGENTS.md`](../AGENTS.md) · [`ATTRIBUTION.md`](../ATTRIBUTION.md) — file-header attribution is **mandatory** before any in-repo sources that cite external docs or code.
 
 | | |
 |--|--|
 | **Target repo** | [graycart/graycart-linux](https://github.com/graycart/graycart-linux) |
-| **Product decision** | **Based on [Omarchy](https://omarchy.org/)** (Dave, 2026-09-12) — technical derivative plan in [04](./04-omarchy-base.md) |
+| **Product decision** | **Omarchy-derived; Graycart-stripped host OS** (Dave, 2026-09-12) — strip/customize plan in [04](./04-omarchy-base.md) |
 | **Peers** | [graycart-gb](https://github.com/graycart/graycart-gb) · [graycart-gba](https://github.com/graycart/graycart-gba) |
 | **Umbrella** | [graycart/graycart](https://github.com/graycart/graycart) — submodule pins only; not a Cargo workspace |
 | **Agent Store partition** | `/cursor/stores/bc-57076e62-f812-47da-bf4c-f3bb0f3af797/docs/graycart-linux/` |
@@ -15,7 +15,7 @@ Research pack for a gaming-focused Linux **host / Omarchy-derived system** in th
 
 ### Product goal
 
-1. **Omarchy-based system:** derive Graycart Linux from Omarchy’s Arch-oriented stack (session, packaging, updates) with Graycart gaming/host overlays — details in [04](./04-omarchy-base.md).
+1. **Omarchy-derived; Graycart-stripped host OS:** start from Omarchy’s Arch-oriented stack, aggressively strip stock branding/bloat, customize for a lean Graycart gaming host — details in [04](./04-omarchy-base.md).
 2. **Host for Graycart cores:** load family `*-core` via trait / C ABI; no machine logic in this repo.
 3. **Comparative research (01–03):** earlier Model 4 / bootc notes remain historical context until sibling rewrites land against the Omarchy decision.
 

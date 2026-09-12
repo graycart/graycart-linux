@@ -4,7 +4,7 @@
 
 Graycart Linux is the gaming-focused Linux system in the Graycart family.
 
-**Product decision (Dave, 2026-09-12):** Graycart Linux is **based on [Omarchy](https://omarchy.org/)** (DHH) — an opinionated Arch Linux setup — as the technical foundation to derive from. Emphasize gaming, emulation, controller-first use, sane recovery, and a cohesive Graycart experience from boot to play. Sibling research will document the derivative plan in [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md) (pending) and revise 01–03 accordingly.
+**Product decision (Dave, 2026-09-12):** **Omarchy-derived; Graycart-stripped host OS.** Upstream is [Omarchy](https://omarchy.org/) (DHH); we **aggressively strip and customize** for a lean Graycart host base — not stock Omarchy branding or a reskin. Emphasize gaming, emulation, controller-first use, sane recovery, and a cohesive Graycart experience from boot to play. Sibling research will document the strip/customize plan in [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md) (pending) and revise 01–03 accordingly.
 
 This repository is intentionally small today. It exists so the project has a public home while we map Omarchy → Graycart Linux and decide packaging, update, and host integration boundaries.
 
@@ -37,18 +37,19 @@ The goals are:
 - **Hardware-aware.** Desktop GPUs, handhelds, controllers, VRR/HDR, Bluetooth, audio, suspend/resume, and game-mode behavior matter.
 - **A cohesive identity.** Graycart should look and feel intentional across the boot experience, desktop, launcher, emulator tooling, and diagnostics.
 
-## Foundation — Omarchy derivative
+## Foundation — Omarchy-derived; Graycart-stripped
 
-**Decided:** Graycart Linux is based on **Omarchy** ([omarchy.org](https://omarchy.org/)). We will document ownership boundaries, update surfaces, what we keep vs replace, and how Graycart host/emulator integration sits on top — see [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md) when research lands.
+**Decided:** **Omarchy-derived; Graycart-stripped host OS.** Start from Omarchy ([omarchy.org](https://omarchy.org/)), then **aggressively strip and customize** — remove stock Omarchy branding/chrome and anything that fights a lean gaming host. Document keep/strip/replace and host integration in [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md) when research lands.
 
 Technical posture:
 
-1. **Derive, do not cargo-cult.** Understand Omarchy’s package/config/update model before forking or overlaying.
-2. **Keep upstream Arch + Omarchy compatibility where practical.** Fork only for concrete Graycart product requirements (gaming session, controller, recovery, branding).
-3. **Host vs cores.** Emulator accuracy stays in `*-core` crates; this repo owns OS/session/host integration.
-4. **Earlier Model 4 (bootc/UB) research** remains useful comparative context in 01–03, but is **not** the chosen primary path.
+1. **Strip first, then customize.** Inventory Omarchy packages/configs; cut to a lean host baseline before adding Graycart layers.
+2. **Not a reskin.** No stock Omarchy branding; Graycart identity owns boot/session/chrome.
+3. **Understand upstream update boundaries** before diverging so security updates stay tractable.
+4. **Host vs cores.** Emulator accuracy stays in `*-core` crates; this repo owns OS/session/host integration.
+5. **Earlier Model 4 (bootc/UB) research** remains comparative context in 01–03 only — not the chosen path.
 
-Open technical work (for 04 + revised 01–03): update/rollback story on an Omarchy/Arch base; hardware matrix; Gamescope/session policy; Steam/Proton; Graycart host install path; branding/Linux Mark; SBOM and GPL source offer when shipping images.
+Open technical work (for 04 + revised 01–03): strip matrix; update/rollback on stripped Omarchy/Arch; hardware matrix; Gamescope/session; Steam/Proton; Graycart host path; branding/Linux Mark; SBOM and GPL source offer when shipping images.
 
 ## Early roadmap
 
@@ -106,18 +107,18 @@ Aligned with [`docs/03-roadmap-and-risks.md`](./docs/03-roadmap-and-risks.md); w
 7. **Measure performance claims instead of assuming them.**
 8. **Controller focus, audio routing, suspend/resume, and display behavior are product features.**
 9. **Emulator accuracy stays in `*-core` crates** — this repo is host / OS shell only.
-10. **Omarchy is the base** — document the derivative; do not silently diverge.
+10. **Omarchy-derived; Graycart-stripped** — document strip/customize; do not ship stock Omarchy branding.
 
 ## Graycart family
 
 - [`graycart`](https://github.com/graycart/graycart) — project umbrella
 - [`graycart-gb`](https://github.com/graycart/graycart-gb) — DMG / Game Boy Color emulator
 - [`graycart-gba`](https://github.com/graycart/graycart-gba) — future Game Boy Advance emulator
-- **`graycart-linux`** — Omarchy-based gaming Linux host / distribution
+- **`graycart-linux`** — Omarchy-derived; Graycart-stripped host OS
 
 ## Contributing
 
-Early contributions should focus on Omarchy derivative research, experiments, hardware findings, and architecture proposals rather than large implementation PRs. Read [`AGENTS.md`](./AGENTS.md) and [`ATTRIBUTION.md`](./ATTRIBUTION.md) before editing docs or sources.
+Early contributions should focus on Omarchy strip/customize research, experiments, hardware findings, and architecture proposals rather than large implementation PRs. Read [`AGENTS.md`](./AGENTS.md) and [`ATTRIBUTION.md`](./ATTRIBUTION.md) before editing docs or sources.
 
 When development begins, this repository will gain a formal contribution guide and build instructions.
 

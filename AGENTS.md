@@ -6,7 +6,7 @@ Graycart Linux is currently in the **research / placeholder stage**. Do not trea
 
 ## Current objective
 
-**Product decision:** Graycart Linux is **based on [Omarchy](https://omarchy.org/)**. Research and document the technical derivative (see [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md)), then establish update/recovery, hardware classes, session strategy, packaging, and Graycart host integration on that base.
+**Product decision:** **Omarchy-derived; Graycart-stripped host OS.** Research and document the aggressive strip/customize plan (see [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md)), then establish update/recovery, hardware classes, session strategy, packaging, and Graycart host integration — without shipping stock Omarchy branding.
 
 Before implementation, Dave review of [`docs/`](./docs/README.md) (01–04, after Omarchy rewrite) is the research gate.
 
@@ -20,7 +20,7 @@ Before implementation, Dave review of [`docs/`](./docs/README.md) (01–04, afte
 ## Working rules
 
 - Research before implementation. Prefer primary upstream documentation for **Omarchy**, Arch Linux, systemd, kernel, Mesa, PipeWire, Steam/Proton, Gamescope, Hyprland/Wayland, and related packaging/update surfaces.
-- Derive from Omarchy deliberately. Understand ownership, update boundaries, and why each component exists before overlaying Graycart changes.
+- Derive from Omarchy, then strip hard. Understand ownership and update boundaries before aggressive removal and Graycart customization; do not ship stock Omarchy branding.
 - Keep upstream compatibility wherever practical. Fork only when there is a concrete product requirement.
 - Prefer declarative/reproducible configuration over opaque mutation scripts.
 - Keep components modular and narrowly owned. Avoid giant bootstrap scripts and miscellaneous helper files.
