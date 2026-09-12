@@ -1,0 +1,33 @@
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local environments / secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Build / image output
+build/
+dist/
+out/
+images/
+*.iso
+*.img
+*.raw
+*.qcow2
+*.vmdk
+
+# Logs / captures
+*.log
+captures/
+
+# Local machine state
+.local/
+.cache/
