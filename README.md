@@ -2,11 +2,11 @@
 
 > **Status:** placeholder / research stage
 
-Graycart Linux is the future gaming-focused Linux **host** (and optional branded distribution) in the Graycart family.
+Graycart Linux is the gaming-focused Linux system in the Graycart family.
 
-**Research default ([01](./docs/01-scope-and-models.md)):** ship the **host app on stock distros first** (Meaning A), then optionally a **Model 4 immutable/atomic branded image** (Fedora bootc / Universal Blue–style; Nix flake acceptable alternate). Emphasize gaming, emulation, controller-first use, sane recovery, and a cohesive Graycart experience from boot to play. **Dave review of docs 01–03 is the gate before image work.**
+**Product decision (Dave, 2026-09-12):** Graycart Linux is **based on [Omarchy](https://omarchy.org/)** (DHH) — an opinionated Arch Linux setup — as the technical foundation to derive from. Emphasize gaming, emulation, controller-first use, sane recovery, and a cohesive Graycart experience from boot to play. Sibling research will document the derivative plan in [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md) (pending) and revise 01–03 accordingly.
 
-This repository is intentionally small today. It exists so the project has a public home while we research the base system and decide what Graycart Linux should become.
+This repository is intentionally small today. It exists so the project has a public home while we map Omarchy → Graycart Linux and decide packaging, update, and host integration boundaries.
 
 ## Research docs
 
@@ -15,9 +15,10 @@ Start here: **[`docs/README.md`](./docs/README.md)**
 | Doc | Topic |
 |-----|--------|
 | [vision.md](./docs/vision.md) | Product vision |
-| [01 — Scope & models](./docs/01-scope-and-models.md) | Host vs branded OS; competing models |
-| [02 — Technical stack](./docs/02-technical-stack.md) | Boot → kernel → userspace → graphics → CI |
-| [03 — Roadmap & risks](./docs/03-roadmap-and-risks.md) | Phases, legal, go/no-go |
+| [01 — Scope & models](./docs/01-scope-and-models.md) | Host vs branded OS; competing models *(being revised for Omarchy base)* |
+| [02 — Technical stack](./docs/02-technical-stack.md) | Boot → kernel → userspace → graphics → CI *(being revised)* |
+| [03 — Roadmap & risks](./docs/03-roadmap-and-risks.md) | Phases, legal, go/no-go *(being revised)* |
+| [04 — Omarchy base](./docs/04-omarchy-base.md) | Derivative plan from Omarchy → Graycart Linux *(stub until research lands)* |
 
 Agent norms: [`AGENTS.md`](./AGENTS.md) · credits: [`ATTRIBUTION.md`](./ATTRIBUTION.md)
 
@@ -36,32 +37,36 @@ The goals are:
 - **Hardware-aware.** Desktop GPUs, handhelds, controllers, VRR/HDR, Bluetooth, audio, suspend/resume, and game-mode behavior matter.
 - **A cohesive identity.** Graycart should look and feel intentional across the boot experience, desktop, launcher, emulator tooling, and diagnostics.
 
-## Likely foundation
+## Foundation — Omarchy derivative
 
-**Default path (research):** **Model 4 — immutable/atomic branded image** on an upstream atomic stack ([Fedora bootc](https://fedoramagazine.org/building-your-own-atomic-bootc-desktop/) / [Universal Blue](https://github.com/ublue-os/bazzite)–style; [Nix flake](https://nixos.wiki/wiki/Flakes) if the team already lives in Nix) — **after** a Graycart Linux **host app** runs on stock Fedora/Ubuntu/Arch.
+**Decided:** Graycart Linux is based on **Omarchy** ([omarchy.org](https://omarchy.org/)). We will document ownership boundaries, update surfaces, what we keep vs replace, and how Graycart host/emulator integration sits on top — see [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md) when research lands.
 
-Why: lowest effort/risk that still yields a coherent product skin; inherits upstream security and GPU stacks; keeps emulator accuracy in `*-core`; matches how niche gaming OSes (e.g. Bazzite) actually ship. See [01 §10](./docs/01-scope-and-models.md).
+Technical posture:
 
-**Not the default:** from-scratch OS, LFS-as-product, or ChromeOS/Asahi-scale downstream kernels. An [Omarchy](https://omarchy.org/)-inspired Arch UX remains a useful **ideas source** for session polish — not the recommended image/update architecture.
+1. **Derive, do not cargo-cult.** Understand Omarchy’s package/config/update model before forking or overlaying.
+2. **Keep upstream Arch + Omarchy compatibility where practical.** Fork only for concrete Graycart product requirements (gaming session, controller, recovery, branding).
+3. **Host vs cores.** Emulator accuracy stays in `*-core` crates; this repo owns OS/session/host integration.
+4. **Earlier Model 4 (bootc/UB) research** remains useful comparative context in 01–03, but is **not** the chosen primary path.
 
-Before implementation we need Dave acceptance of base (bootc/UB vs Nix vs host-only), update/rollback, hardware classes, session choice, branding (Linux Mark), and packaging boundaries.
+Open technical work (for 04 + revised 01–03): update/rollback story on an Omarchy/Arch base; hardware matrix; Gamescope/session policy; Steam/Proton; Graycart host install path; branding/Linux Mark; SBOM and GPL source offer when shipping images.
 
 ## Early roadmap
 
-Aligned with [`docs/03-roadmap-and-risks.md`](./docs/03-roadmap-and-risks.md):
+Aligned with [`docs/03-roadmap-and-risks.md`](./docs/03-roadmap-and-risks.md); will re-phase once Omarchy base research lands:
 
 ### Phase 0 — Research (now)
 
-- Confirm Model 4 (atomic image) vs host-app-only; choose bootc/UB vs Nix vs Debian+mkosi.
+- Map Omarchy → Graycart Linux derivative plan ([04](./docs/04-omarchy-base.md)).
+- Revise scope/stack/roadmap (01–03) against the Omarchy decision.
 - Define supported hardware classes.
-- Decide desktop/session architecture (Gamescope / Wayland).
-- Define update, rollback, and recovery strategy.
+- Decide desktop/session architecture (Gamescope / Wayland) on the Omarchy base.
+- Define update, rollback, and recovery strategy for the derivative.
 - Establish branding and UX principles (incl. Linux Mark).
-- Accept docs 01–03 before any public “download Graycart Linux” claim.
+- Accept research pack before any public “download Graycart Linux” claim.
 
 ### Phase 1 — Bootstrap
 
-- Reproducible base installation/image (only after research gate).
+- Reproducible base installation/image derived from Omarchy (only after research gate).
 - Graycart package repository or overlay strategy.
 - First-boot configuration.
 - Hardware detection and sane defaults.
@@ -101,20 +106,21 @@ Aligned with [`docs/03-roadmap-and-risks.md`](./docs/03-roadmap-and-risks.md):
 7. **Measure performance claims instead of assuming them.**
 8. **Controller focus, audio routing, suspend/resume, and display behavior are product features.**
 9. **Emulator accuracy stays in `*-core` crates** — this repo is host / OS shell only.
+10. **Omarchy is the base** — document the derivative; do not silently diverge.
 
 ## Graycart family
 
 - [`graycart`](https://github.com/graycart/graycart) — project umbrella
 - [`graycart-gb`](https://github.com/graycart/graycart-gb) — DMG / Game Boy Color emulator
 - [`graycart-gba`](https://github.com/graycart/graycart-gba) — future Game Boy Advance emulator
-- **`graycart-linux`** — future gaming-focused Linux host / distribution
+- **`graycart-linux`** — Omarchy-based gaming Linux host / distribution
 
 ## Contributing
 
-Early contributions should focus on research, experiments, hardware findings, and architecture proposals rather than large implementation PRs. Read [`AGENTS.md`](./AGENTS.md) and [`ATTRIBUTION.md`](./ATTRIBUTION.md) before editing docs or sources.
+Early contributions should focus on Omarchy derivative research, experiments, hardware findings, and architecture proposals rather than large implementation PRs. Read [`AGENTS.md`](./AGENTS.md) and [`ATTRIBUTION.md`](./ATTRIBUTION.md) before editing docs or sources.
 
 When development begins, this repository will gain a formal contribution guide and build instructions.
 
 ## License
 
-The eventual source/configuration in this repository will be licensed explicitly as implementation begins. Individual upstream components will retain their own licenses.
+The eventual source/configuration in this repository will be licensed explicitly as implementation begins. Individual upstream components (including Omarchy and Arch packages) will retain their own licenses.

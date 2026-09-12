@@ -6,21 +6,21 @@ Graycart Linux is currently in the **research / placeholder stage**. Do not trea
 
 ## Current objective
 
-Research and define a gaming-focused Linux **host** (and optional **Model 4** immutable/atomic branded image) in the Graycart family. Sequence: host-on-stock-distro first, then optional atomic image (Fedora bootc / Universal Blue–style; Nix alternate).
+**Product decision:** Graycart Linux is **based on [Omarchy](https://omarchy.org/)**. Research and document the technical derivative (see [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md)), then establish update/recovery, hardware classes, session strategy, packaging, and Graycart host integration on that base.
 
-Before implementation, establish the architecture, update/recovery model, supported hardware classes, desktop/session strategy, packaging approach, and acceptance criteria. Dave review of [`docs/`](./docs/README.md) (01–03) is the research gate.
+Before implementation, Dave review of [`docs/`](./docs/README.md) (01–04, after Omarchy rewrite) is the research gate.
 
 ### How agents should navigate
 
 1. Read **this file** + [`ATTRIBUTION.md`](./ATTRIBUTION.md) before editing sources.
-2. Research pack: start with [`docs/README.md`](./docs/README.md), then [`01`](./docs/01-scope-and-models.md) → [`02`](./docs/02-technical-stack.md) → [`03`](./docs/03-roadmap-and-risks.md); product color in [`docs/vision.md`](./docs/vision.md).
+2. Research pack: start with [`docs/README.md`](./docs/README.md) and [`04-omarchy-base.md`](./docs/04-omarchy-base.md), then revised [`01`](./docs/01-scope-and-models.md) → [`02`](./docs/02-technical-stack.md) → [`03`](./docs/03-roadmap-and-risks.md); product color in [`docs/vision.md`](./docs/vision.md).
 3. Family-standard core API (Agent Store): `/cursor/stores/bc-57076e62-f812-47da-bf4c-f3bb0f3af797/docs/graycart-family/01-core-api.md` — linux is **host-only**; do not put emulator machine logic here.
 4. Own only your partition paths; keep PRs docs-first until the research gate clears.
 
 ## Working rules
 
-- Research before implementation. Prefer primary upstream documentation for Arch Linux, systemd, kernel, Mesa, PipeWire, Steam/Proton, Gamescope, Hyprland/Wayland, bootc/OSTree/Nix, Buildroot/Yocto, and whatever base project is selected.
-- Do not copy another distribution wholesale. Understand ownership, update boundaries, and why each component exists.
+- Research before implementation. Prefer primary upstream documentation for **Omarchy**, Arch Linux, systemd, kernel, Mesa, PipeWire, Steam/Proton, Gamescope, Hyprland/Wayland, and related packaging/update surfaces.
+- Derive from Omarchy deliberately. Understand ownership, update boundaries, and why each component exists before overlaying Graycart changes.
 - Keep upstream compatibility wherever practical. Fork only when there is a concrete product requirement.
 - Prefer declarative/reproducible configuration over opaque mutation scripts.
 - Keep components modular and narrowly owned. Avoid giant bootstrap scripts and miscellaneous helper files.

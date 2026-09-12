@@ -1,33 +1,34 @@
 # graycart-linux research docs
 
-Research pack for a gaming-focused Linux **host / optional branded image** in the [Graycart](https://github.com/graycart/graycart) family. **Review gate before building images or a distro** ([03](./03-roadmap-and-risks.md)).
+Research pack for a gaming-focused Linux **host / Omarchy-derived system** in the [Graycart](https://github.com/graycart/graycart) family. **Review gate before building images or a public distro** ([03](./03-roadmap-and-risks.md), [04](./04-omarchy-base.md)).
 
 **Agent norms + credits:** [`AGENTS.md`](../AGENTS.md) · [`ATTRIBUTION.md`](../ATTRIBUTION.md) — file-header attribution is **mandatory** before any in-repo sources that cite external docs or code.
 
 | | |
 |--|--|
-| **Target repo** | [graycart/graycart-linux](https://github.com/graycart/graycart-linux) — placeholder + vision; this docs pack |
-| **Peers** | [graycart-gb](https://github.com/graycart/graycart-gb) (interim app) · [graycart-gba](https://github.com/graycart/graycart-gba) (long-term app) |
+| **Target repo** | [graycart/graycart-linux](https://github.com/graycart/graycart-linux) |
+| **Product decision** | **Based on [Omarchy](https://omarchy.org/)** (Dave, 2026-09-12) — technical derivative plan in [04](./04-omarchy-base.md) |
+| **Peers** | [graycart-gb](https://github.com/graycart/graycart-gb) · [graycart-gba](https://github.com/graycart/graycart-gba) |
 | **Umbrella** | [graycart/graycart](https://github.com/graycart/graycart) — submodule pins only; not a Cargo workspace |
 | **Agent Store partition** | `/cursor/stores/bc-57076e62-f812-47da-bf4c-f3bb0f3af797/docs/graycart-linux/` |
 | **Family API** | Agent Store [`docs/graycart-family/`](/cursor/stores/bc-57076e62-f812-47da-bf4c-f3bb0f3af797/docs/graycart-family/README.md) — linux is **host-only** over `*-core` |
 
-### Product goal (two meanings)
+### Product goal
 
-1. **Meaning A — Linux host app:** shell that loads Graycart cores via family trait / C ABI (already in family design).
-2. **Meaning B — branded OS / image (open):** installable “Graycart Linux”; research default is **Model 4** immutable/atomic image *after* host-on-stock-distros ([01](./01-scope-and-models.md)). Omarchy/Arch remains UX inspiration only — not the recommended update architecture.
-
-Semver / packaging policy: TBD once implementation begins; match family host posture (lib-first cores, no machine logic in this repo).
+1. **Omarchy-based system:** derive Graycart Linux from Omarchy’s Arch-oriented stack (session, packaging, updates) with Graycart gaming/host overlays — details in [04](./04-omarchy-base.md).
+2. **Host for Graycart cores:** load family `*-core` via trait / C ABI; no machine logic in this repo.
+3. **Comparative research (01–03):** earlier Model 4 / bootc notes remain historical context until sibling rewrites land against the Omarchy decision.
 
 ---
 
 ## Reading order
 
 0. **[AGENTS.md](../AGENTS.md)** + **[ATTRIBUTION.md](../ATTRIBUTION.md)** — norms and mandatory file-header credits.
-1. **[vision.md](./vision.md)** — product vision already in-tree (boot-to-play, controller-first, recovery).
-2. **[01 — Scope & models](./01-scope-and-models.md)** — host vs branded OS; five models; default path + non-goals.
-3. **[02 — Technical stack](./02-technical-stack.md)** — boot → kernel → userspace → graphics → SBOM/CI.
-4. **[03 — Roadmap & risks](./03-roadmap-and-risks.md)** — phases, legal, traps, go/no-go.
+1. **[vision.md](./vision.md)** — product vision (boot-to-play, controller-first, recovery).
+2. **[04 — Omarchy base](./04-omarchy-base.md)** — derivative plan (stub → full research when sibling finishes).
+3. **[01 — Scope & models](./01-scope-and-models.md)** — scope options *(being revised for Omarchy)*.
+4. **[02 — Technical stack](./02-technical-stack.md)** — boot → userspace → graphics → CI *(being revised)*.
+5. **[03 — Roadmap & risks](./03-roadmap-and-risks.md)** — phases, legal, go/no-go *(being revised)*.
 
 Family-standard core API (sibling-owned): Agent Store [`docs/graycart-family/`](/cursor/stores/bc-57076e62-f812-47da-bf4c-f3bb0f3af797/docs/graycart-family/README.md).
 
@@ -37,28 +38,27 @@ Family-standard core API (sibling-owned): Agent Store [`docs/graycart-family/`](
 
 | Doc | Topic | Status |
 |-----|--------|--------|
-| [AGENTS.md](../AGENTS.md) | Agent norms (public repo) | Written |
+| [AGENTS.md](../AGENTS.md) | Agent norms | Written |
 | [ATTRIBUTION.md](../ATTRIBUTION.md) | File-header credit policy | Written |
 | [vision.md](./vision.md) | Product vision / experience goals | Written |
-| [01-scope-and-models.md](./01-scope-and-models.md) | Scope + competing product models | Mirrored from Agent Store |
-| [02-technical-stack.md](./02-technical-stack.md) | Boot / kernel / userspace / packaging | Mirrored from Agent Store |
-| [03-roadmap-and-risks.md](./03-roadmap-and-risks.md) | Phases, cost, legal, go/no-go | Mirrored from Agent Store |
+| [04-omarchy-base.md](./04-omarchy-base.md) | Omarchy → Graycart Linux derivative | Stub (await sibling research) |
+| [01-scope-and-models.md](./01-scope-and-models.md) | Scope + product models | Mirrored; pending Omarchy rewrite |
+| [02-technical-stack.md](./02-technical-stack.md) | Boot / kernel / userspace / packaging | Mirrored; pending Omarchy rewrite |
+| [03-roadmap-and-risks.md](./03-roadmap-and-risks.md) | Phases, cost, legal, go/no-go | Mirrored; pending Omarchy rewrite |
 
-Cross-family and internal status links in mirrored pages point at Agent Store absolute paths so Cursor agents can follow them. GitHub web readers: use the [store index](/cursor/stores/bc-57076e62-f812-47da-bf4c-f3bb0f3af797/docs/graycart-linux/README.md) when available in-agent.
+Cross-family and internal status links in mirrored pages point at Agent Store absolute paths.
 
 ---
 
 ## Still stubbed / open
 
-- Implementation code, `Cargo.toml`, image CI, and installable ISOs — **not started** (research gate).
-- Umbrella submodule pin for `graycart-linux` — **recommended, not yet proposed** (see scaffold status).
-- Dave acceptance of 01–03 (Model 4 vs Arch/Omarchy lean; host-first sequencing).
+- Full [04-omarchy-base.md](./04-omarchy-base.md) + Omarchy-aligned rewrites of 01–03 (sibling agent).
+- Implementation code, image CI, and installable ISOs — not started (research gate).
+- Umbrella submodule pin for `graycart-linux` — recommended after research acceptance.
 
 ---
 
 ## Internal status (Agent Store)
-
-Agents drop short completion notes under `internal/graycart-linux/status-*.md`:
 
 - [`status-scope.md`](/cursor/stores/bc-57076e62-f812-47da-bf4c-f3bb0f3af797/internal/graycart-linux/status-scope.md)
 - [`status-tech-stack.md`](/cursor/stores/bc-57076e62-f812-47da-bf4c-f3bb0f3af797/internal/graycart-linux/status-tech-stack.md)

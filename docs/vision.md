@@ -6,9 +6,9 @@ The experience should be coherent from boot through game launch, play, suspend, 
 
 ## Product direction
 
-Research default ([01](./01-scope-and-models.md)): **host app on stock distros first**, then optional **Model 4 immutable/atomic branded image** (Fedora bootc / Universal Blue–style; Nix alternate). Experience goals below still apply regardless of base.
+**Decided (Dave, 2026-09-12):** Graycart Linux is **based on [Omarchy](https://omarchy.org/)**. See [04](./04-omarchy-base.md) for the derivative plan (stub until research lands). Experience goals below drive what we change on top of that base.
 
-Omarchy and similar curated Arch setups remain useful **UX inspiration** (opinionated, transparent), not the recommended update/image architecture. Graycart's priorities are different: gaming latency, controller behavior, display/audio switching, emulator integration, Steam/Proton, handheld/TV use, recovery, and reproducibility are central product concerns.
+Graycart priorities on the Omarchy foundation: gaming latency, controller behavior, display/audio switching, emulator host integration, Steam/Proton, handheld/TV use, recovery, and reproducibility.
 
 ## Experience goals
 
