@@ -13,7 +13,7 @@ Before implementation, Dave review of [`docs/`](./docs/README.md) (01–04, afte
 ### How agents should navigate
 
 1. Read **this file** + [`ATTRIBUTION.md`](./ATTRIBUTION.md) before editing sources.
-2. Research pack: start with [`docs/README.md`](./docs/README.md) and [`04-omarchy-base.md`](./docs/04-omarchy-base.md), then revised [`01`](./docs/01-scope-and-models.md) → [`02`](./docs/02-technical-stack.md) → [`03`](./docs/03-roadmap-and-risks.md); product color in [`docs/vision.md`](./docs/vision.md).
+2. Research pack: [`DECISION`](./docs/DECISION-omarchy-base.md) → [`04`](./docs/04-omarchy-base.md) → [`01`](./docs/01-scope-and-models.md) → [`02`](./docs/02-technical-stack.md) → [`03`](./docs/03-roadmap-and-risks.md); index [`docs/README.md`](./docs/README.md); vision [`docs/vision.md`](./docs/vision.md).
 3. Family-standard core API (Agent Store): `/cursor/stores/bc-57076e62-f812-47da-bf4c-f3bb0f3af797/docs/graycart-family/01-core-api.md` — linux is **host-only**; do not put emulator machine logic here.
 4. Own only your partition paths; keep PRs docs-first until the research gate clears.
 

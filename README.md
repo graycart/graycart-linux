@@ -4,7 +4,7 @@
 
 Graycart Linux is the gaming-focused Linux system in the Graycart family.
 
-**Product decision (Dave, 2026-09-12):** **Omarchy-derived; Graycart-stripped host OS.** Upstream is [Omarchy](https://omarchy.org/) (DHH); we **aggressively strip and customize** for a lean Graycart host base — not stock Omarchy branding or a reskin. Emphasize gaming, emulation, controller-first use, sane recovery, and a cohesive Graycart experience from boot to play. Sibling research will document the strip/customize plan in [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md) (pending) and revise 01–03 accordingly.
+**Product decision (Dave, 2026-09-12):** **Omarchy-derived; Graycart-stripped host OS.** Upstream is [Omarchy](https://omarchy.org/) (DHH); we **aggressively strip and customize** for a lean Graycart host base — not stock Omarchy branding or a reskin. Emphasize gaming, emulation, controller-first use, sane recovery, and a cohesive Graycart experience from boot to play. Strip/customize plan: [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md); scope/stack/roadmap revised in 01–03.
 
 This repository is intentionally small today. It exists so the project has a public home while we map Omarchy → Graycart Linux and decide packaging, update, and host integration boundaries.
 
@@ -14,11 +14,12 @@ Start here: **[`docs/README.md`](./docs/README.md)**
 
 | Doc | Topic |
 |-----|--------|
+| [DECISION — Omarchy base](./docs/DECISION-omarchy-base.md) | Product decision record |
+| [04 — Omarchy base](./docs/04-omarchy-base.md) | Inventory + KEEP/STRIP/REPLACE matrix |
 | [vision.md](./docs/vision.md) | Product vision |
-| [01 — Scope & models](./docs/01-scope-and-models.md) | Host vs branded OS; competing models *(being revised for Omarchy base)* |
-| [02 — Technical stack](./docs/02-technical-stack.md) | Boot → kernel → userspace → graphics → CI *(being revised)* |
-| [03 — Roadmap & risks](./docs/03-roadmap-and-risks.md) | Phases, legal, go/no-go *(being revised)* |
-| [04 — Omarchy base](./docs/04-omarchy-base.md) | Derivative plan from Omarchy → Graycart Linux *(stub until research lands)* |
+| [01 — Scope & models](./docs/01-scope-and-models.md) | Scope after Omarchy decision |
+| [02 — Technical stack](./docs/02-technical-stack.md) | Omarchy components + Graycart deltas |
+| [03 — Roadmap & risks](./docs/03-roadmap-and-risks.md) | Phases, legal, go/no-go |
 
 Agent norms: [`AGENTS.md`](./AGENTS.md) · credits: [`ATTRIBUTION.md`](./ATTRIBUTION.md)
 
@@ -39,7 +40,7 @@ The goals are:
 
 ## Foundation — Omarchy-derived; Graycart-stripped
 
-**Decided:** **Omarchy-derived; Graycart-stripped host OS.** Start from Omarchy ([omarchy.org](https://omarchy.org/)), then **aggressively strip and customize** — remove stock Omarchy branding/chrome and anything that fights a lean gaming host. Document keep/strip/replace and host integration in [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md) when research lands.
+**Decided:** **Omarchy-derived; Graycart-stripped host OS.** Start from Omarchy ([omarchy.org](https://omarchy.org/)), then **aggressively strip and customize** — remove stock Omarchy branding/chrome and anything that fights a lean gaming host. Keep/strip/replace and host integration: [`docs/04-omarchy-base.md`](./docs/04-omarchy-base.md).
 
 Technical posture:
 
@@ -49,7 +50,7 @@ Technical posture:
 4. **Host vs cores.** Emulator accuracy stays in `*-core` crates; this repo owns OS/session/host integration.
 5. **Earlier Model 4 (bootc/UB) research** remains comparative context in 01–03 only — not the chosen path.
 
-Open technical work (for 04 + revised 01–03): strip matrix; update/rollback on stripped Omarchy/Arch; hardware matrix; Gamescope/session; Steam/Proton; Graycart host path; branding/Linux Mark; SBOM and GPL source offer when shipping images.
+Open technical work (see 04 matrix + 03 roadmap): strip matrix; update/rollback on stripped Omarchy/Arch; hardware matrix; Gamescope/session; Steam/Proton; Graycart host path; branding/Linux Mark; SBOM and GPL source offer when shipping images.
 
 ## Early roadmap
 
